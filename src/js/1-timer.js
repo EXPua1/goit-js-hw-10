@@ -1,5 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const input = document.querySelector('#datetime-picker');
 const startButton = document.querySelector('button[data-start]');
@@ -20,7 +22,11 @@ const options = {
     userSelectedDate = selectedDates[0];
     const now = new Date();
     if (userSelectedDate <= now) {
-      showAlert('Please choose a date in the future');
+      iziToast.error({
+        title: 'Error',
+        message: 'Please choose a date in the future',
+        position: 'topRight',
+      });
       startButton.disabled = true;
     } else {
       startButton.disabled = false;
