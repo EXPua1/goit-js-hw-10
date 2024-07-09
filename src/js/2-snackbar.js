@@ -10,25 +10,30 @@ form.addEventListener('submit', (e) => {
     const selectedState = document.querySelector('form input[name="state"]:checked');
     const delayInput = form.querySelector('input[name="delay"]');
     const delay = parseInt(delayInput.value, 10);
+    form.reset()
     const promise = new Promise((resolve, reject) => {
         setTimeout(() => {
       
             if (selectedState.value === 'fulfilled') {
                 resolve(`Fulfilled promise in ${delay}ms`);
+                
             } else {
                 reject(`Rejected promise in ${delay}ms`);
+                
             }
+            
         }, delay);
+         
     });
 
    promise
         .then(message => {
             iziToast.success({
-                title: 'OK',
+                title: 'success',
                 message: message,
                position: 'topRight',
             });
-            console.log(message);
+           
         })
         .catch(error => {
             iziToast.error({
@@ -37,6 +42,6 @@ form.addEventListener('submit', (e) => {
                 position: 'topRight',
                 
             });
-            console.log(error);
+            
         });
 });
