@@ -93,23 +93,5 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-function showAlert(message) {
-  const alertHTML = `
-    <div class="alert">${message}</div>
-  `;
-  document.body.insertAdjacentHTML('beforeend', alertHTML);
 
-  const alertBox = document.querySelector('.alert');
 
-  setTimeout(() => {
-    if (alertBox) {
-      alertBox.remove();
-    }
-  }, 3000); // Alert disappears after 3 seconds
-}
-
-// Insert styles for alert
-const styleSheet = document.createElement('style');
-styleSheet.type = 'text/css';
-styleSheet.innerText = styles;
-document.head.appendChild(styleSheet);
